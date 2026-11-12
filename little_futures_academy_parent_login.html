@@ -84,7 +84,7 @@ async function checkParentAccess(){
   const {data:{user},error}=await academyClient.auth.getUser();
   if(check!==academyAuthCheck)return;
   if(error||!user){authMessage('Sign in or create a parent account to continue.');return}
-  const {data,error:enrollmentError}=await academyClient.from('academy_enrollments').select('access_status').eq('user_id',user.id).eq('access_status','Active').limit(1);
+  const {data,error:enrollmentError}=await academyClient.from('academy_enrollments').select('access_status').eq('user_id',user.id).eq('access_status','active').limit(1);
   if(check!==academyAuthCheck)return;
   if(enrollmentError){authMessage('Signed in, but enrollment could not be checked. Please contact Academy support.');return}
   if(!data?.length){authMessage('Signed in as '+user.email+'. Academy access is pending verification of your purchase.');return}
