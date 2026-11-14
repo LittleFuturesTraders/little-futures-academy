@@ -105,7 +105,7 @@ async function parentSignUp(){
  const email=document.getElementById('parent-email').value.trim(),password=document.getElementById('parent-password').value;
  if(!email||password.length<6)return authMessage('Enter your email and a password of at least 6 characters.');
  authMessage('Creating account…');
- const {error}=await academyClient.auth.signUp({email,password,emailRedirectTo:'https://littlefuturestraders.github.io/little-futures-academy/'});
+ const {error}=await academyClient.auth.signUp({email,password,options:{emailRedirectTo:'https://littlefuturestraders.github.io/little-futures-academy/little_futures_academy_parent_login.html'}});
  if(error)return authMessage(error.message);
  authMessage('Account request received. Check your email for a confirmation link if prompted, then sign in. Purchased access must also be verified.');
 }
